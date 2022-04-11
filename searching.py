@@ -19,12 +19,24 @@ def read_data(file_name, field):
         return None
     return data[field]
 
-
-
+def linear_search(sequence, number):
+    vyskyt = 0
+    index = []
+    for i, n in enumerate(sequence):
+        if n == number:
+            vyskyt += 1
+            index.append(i)
+    slovnik = {
+        "position": index,
+        "count": vyskyt
+    }
+    return slovnik
 
 def main():
     sequential_data = read_data("sequential.json", "unordered_numbers")
     print(sequential_data)
+    results = linear_search(sequential_data, 0)
+    print(results)
 
 if __name__ == '__main__':
     main()
