@@ -47,7 +47,19 @@ def pattern_search(sequence, pattern):
         index += 1
     return position
 
-
+def binary_search(sequence, number):
+    low = 0
+    high = len(sequence) - 1
+    mid = 0
+    while low <= high:
+        mid = (high + low) // 2
+        if sequence[mid] < number:
+            low = mid + 1
+        elif sequence[mid] > number:
+            high = mid - 1
+        else:
+            return mid
+    return None
 
 
 
@@ -58,6 +70,8 @@ def main():
     print(results)
     dna = read_data("sequential.json", "dna_sequence")
     print(pattern_search(dna, "ATA"))
+    order = read_data("sequential.json", "ordered_numbers")
+    print(binary_search(order, -3))
 
 if __name__ == '__main__':
     main()
